@@ -95,7 +95,7 @@ export default function Hero() {
               {/* Image Container */}
               <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-200/80 shadow-xl bg-slate-100 ">
                 <Image
-                  src="/images/profile.jpg" 
+                  src="/images/profile.JPG" 
                   alt="Rediet - Developer Profile"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
