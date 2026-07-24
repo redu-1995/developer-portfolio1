@@ -1,5 +1,5 @@
 import SectionTitle from "@/components/ui/SectionTitle";
-
+import SectionDivider from "@/components/ui/SectionDivider";
 export default function About() {
   return (
     <section id="about" className="relative py-20 lg:py-28 overflow-hidden bg-white">
@@ -97,6 +97,7 @@ export default function About() {
 
         </div>
       </div>
+      <SectionDivider />
     </section>
   );
 }

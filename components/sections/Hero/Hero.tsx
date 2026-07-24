@@ -1,108 +1,107 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-32 bg-gradient-to-br from-white via-emerald-50/40 to-white">
-      {/* Background Decorative Glow Effect */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-1/4 right-10 -z-10 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl"
-      />
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 bg-white text-slate-900">
       
+      {/* --- BACKGROUND DECORATIVE ELEMENTS --- */}
+      {/* 1. Top Ambient Gradient Glow */}
+      <div 
+        className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        aria-hidden="true"
+      >
+        <div 
+          className="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-emerald-200 to-teal-400 opacity-25 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        />
+      </div>
+
+      {/* 2. Soft Emerald Blurred Blobs */}
+      <div className="pointer-events-none absolute top-1/4 -left-20 w-72 h-72 bg-emerald-100/60 rounded-full blur-3xl -z-10" />
+      <div className="pointer-events-none absolute bottom-10 right-0 w-80 h-80 bg-teal-100/40 rounded-full blur-3xl -z-10" />
+
+      {/* 3. Subtle Grid Pattern Overlay */}
+      <div 
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:24px_24px]"
+        aria-hidden="true"
+      />
+
+      {/* --- MAIN HERO CONTENT --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Headline & Action Buttons */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          {/* Left Column: Text & CTAs (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-sm font-medium mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              Available for Frontend Opportunities
+            {/* Status / Welcome Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs sm:text-sm font-semibold">
+              <Sparkles className="w-4 h-4 text-emerald-600" />
+              <span>Full Stack & Frontend Developer</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Building Modern <span className="text-emerald-600">Web Experiences</span> That Solve Real Problems.
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+              Building Modern <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 via-teal-600 to-emerald-800">
+                Web Experiences
+              </span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed">
-              Hi, I&apos;m <span className="font-semibold text-slate-900">Rediet</span> — a Frontend Developer specializing in 
-              React, Next.js, and TypeScript. I craft clean, responsive interfaces with performance and UX in mind.
+            {/* Subtitle / Niche Description */}
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              I build responsive business applications using <strong className="font-semibold text-slate-800">React, Next.js, Django,</strong> and <strong className="font-semibold text-slate-800">PostgreSQL</strong>—turning real business workflows into intuitive, high-performance software.
             </p>
 
-            {/* Action Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4 items-center">
+            {/* Call To Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 href="#projects"
-                className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-all duration-200 shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/35 hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 group"
               >
-                View Projects
+                <span>View Selected Work</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              
+
               <a
                 href="/Rediet_Abreham_CV.pdf"
                 download
-                className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-200 transition-all duration-200 shadow-sm hover:border-slate-300"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm border border-slate-200/80 transition-all duration-200 flex items-center justify-center gap-2"
               >
-                Download CV
+                <Download className="w-4 h-4 text-slate-600" />
+                <span>Download CV</span>
               </a>
             </div>
 
-            {/* Tech Stack Indicators */}
-            <div className="mt-12 border-t border-slate-200/80 pt-6 w-full">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                Core Tech Stack
-              </p>
-              <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-600">
-                {["React", "Next.js", "TypeScript", "Tailwind CSS", "Django"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200/60"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            {/* Tech Stack Quick Badges */}
+            <div className="pt-6 border-t border-slate-200/60 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-semibold text-slate-500">
+              <span className="text-slate-400 uppercase tracking-wider text-[11px] font-bold mr-2">Core Tech:</span>
+              <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">React</span>
+              <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Next.js</span>
+              <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">TypeScript</span>
+              <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Django</span>
+              <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">PostgreSQL</span>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Image & Tech Floating Badges */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
-            <div className="relative group">
+          {/* Right Column: Profile Image / Visual Card (5 Cols) */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               
-              {/* Outer Decorative Ring & Shadow */}
-              <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl ring-8 ring-emerald-100/80 transition-transform duration-500 group-hover:scale-105">
-                {/* Replace with your photo inside public/images/portrait.jpg */}
+              {/* Decorative Ring behind image */}
+              <div className="pt-2 absolute inset-0 rounded-3xl bg-linear-to-tr from-emerald-500 to-teal-300 rotate-3 scale-105 opacity-20 blur-xs" />
+              
+              {/* Image Container */}
+              <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-200/80 shadow-xl bg-slate-100 ">
                 <Image
-                  src="/images/rediet.png"
-                  alt="Rediet - Frontend Developer"
-                  width={400}
-                  height={400}
-                  className="object-cover w-full h-full"
+                  src="/images/profile.jpg" 
+                  alt="Rediet - Developer Profile"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover object-[center_5%]"
                   priority
                 />
-              </div>
-
-              {/* Floating Skill Badge 1 (React) */}
-              <div className="absolute -top-3 -left-4 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2 text-xs font-bold text-slate-800 animate-bounce duration-1000">
-                <span className="text-cyan-500 text-base">⚛</span> React
-              </div>
-
-              {/* Floating Skill Badge 2 (Next.js) */}
-              <div className="absolute top-1/2 -right-6 -translate-y-1/2 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2 text-xs font-bold text-slate-800">
-                <span className="text-black text-base">▲</span> Next.js
-              </div>
-
-              {/* Floating Skill Badge 3 (Tailwind) */}
-              <div className="absolute -bottom-2 left-6 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-2 text-xs font-bold text-slate-800">
-                <span className="text-sky-400 text-base">🎨</span> Tailwind
               </div>
 
             </div>

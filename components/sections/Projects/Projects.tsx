@@ -4,6 +4,10 @@ import ProjectCard from "./ProjectCard";
 import { PROJECTS_DATA } from "@/data/projects";
 
 export default function Projects() {
+  if (!PROJECTS_DATA || PROJECTS_DATA.length === 0) {
+    return null;
+  }
+
   const featuredProject = PROJECTS_DATA.find((p) => p.featured) || PROJECTS_DATA[0];
   const secondaryProjects = PROJECTS_DATA.filter((p) => p.id !== featuredProject.id);
 
@@ -16,16 +20,20 @@ export default function Projects() {
         />
 
         {/* Flagship / Featured Case Study */}
-        <div className="mb-12">
-          <FeaturedProjectCard project={featuredProject} />
-        </div>
+        {featuredProject && (
+          <div className="mb-12">
+            <FeaturedProjectCard project={featuredProject} />
+          </div>
+        )}
 
         {/* Secondary Supporting Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {secondaryProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        {secondaryProjects.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {secondaryProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

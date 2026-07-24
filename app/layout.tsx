@@ -13,8 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Rediet Portfolio",
+  title: "Rediet | Frontend & Full Stack Developer",
+  description: "Portfolio of Rediet - Frontend & Full Stack Developer specializing in React, Next.js, and modern web applications.",
+  icons: {
+    icon: [
+      { url: "/developer_svg.svg" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+   
+  },
 };
 
 export default function RootLayout({

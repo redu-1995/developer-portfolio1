@@ -2,90 +2,110 @@ import Image from "next/image";
 import { ProjectItem } from "@/data/projects";
 
 export default function FeaturedProjectCard({ project }: { project: ProjectItem }) {
+  const isCompleted = project.status === "Completed";
+
   return (
     <div className="group bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:border-emerald-300 hover:shadow-xl transition-all duration-300 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
         
-        {/* Left Column: Phone Showcase Frame */}
-       {/* Left Column: Full-Height Mobile Mockup */}
-<div className="lg:col-span-6 relative min-h-[420px] sm:min-h-[500px] lg:min-h-[560px] bg-slate-900 overflow-hidden flex flex-col justify-between p-6 sm:p-8">
-  
-  {/* Badges Floating on Top */}
-  <div className="relative z-20 flex gap-2 mb-4">
-    <span className="px-3 py-1 rounded-full bg-slate-800/90 text-white text-xs font-semibold border border-slate-700 shadow-md">
-      ★ Featured Case Study
-    </span>
-    <span className="px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-semibold shadow-md">
-      {project.type}
-    </span>
-  </div>
+        {/* Left Column: Phone Mockup Frame Container */}
+        <div className="lg:col-span-5 relative bg-slate-900 overflow-hidden flex flex-col justify-between p-6 sm:p-8 min-h-[460px] lg:min-h-[560px]">
+          
+          {/* Floating Badges */}
+          <div className="relative z-20 flex flex-wrap gap-2 mb-4">
+            <span className="px-3 py-1 rounded-full bg-slate-800/90 text-white text-xs font-semibold border border-slate-700 shadow-md">
+              ★ Featured Case Study
+            </span>
+            <span className="px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-semibold shadow-md">
+              {project.type}
+            </span>
+            <span
+              className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-md ${
+                isCompleted ? "bg-emerald-600 text-white" : "bg-amber-500 text-white"
+              }`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${isCompleted ? "bg-white" : "bg-white animate-pulse"}`} />
+              {project.status || "Completed"}
+            </span>
+          </div>
 
-  {/* Larger, Responsive Phone Frame */}
-  <div className="relative z-10 my-auto flex justify-center items-center py-4">
-    <div className="relative w-[260px] sm:w-[300px] lg:w-[320px] aspect-[9/18] rounded-[2.5rem] border-[6px] border-slate-700 bg-slate-950 overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-105">
-      
-      {/* Phone Notch Pill */}
-      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-800 rounded-full z-20 border border-slate-700/60" />
+          {/* Phone Frame Mockup (Prevents image stretching) */}
+          <div className="relative z-10 my-auto flex justify-center items-center py-4">
+            <div className="relative w-[230px] sm:w-[260px] aspect-[9/18] rounded-[2.5rem] border-[7px] border-slate-800 bg-slate-950 overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-105">
+              
+              {/* Phone Dynamic Island / Speaker Notch */}
+              <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-16 h-3.5 bg-slate-800 rounded-full z-20 border border-slate-700/60" />
 
-      {/* Screenshot Image */}
-      <Image
-        src={project.image}
-        alt={project.title}
-        fill
-        className="object-cover object-top"
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        priority
-      />
-    </div>
-  </div>
+              {/* Mobile Screenshot */}
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 35vw"
+                priority
+              />
+            </div>
+          </div>
 
-  {/* Subtle Ambient Background Gradient */}
-  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-emerald-950/20 pointer-events-none" />
-</div>
+          {/* Ambient Lighting Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-emerald-950/20 pointer-events-none" />
+        </div>
 
-        {/* Right Column: Case Study Details */}
-        <div className="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+        {/* Right Column: Case Study Info */}
+        <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between gap-2 mb-2">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
                 Role: {project.role}
               </span>
+              {project.duration && (
+                <span className="text-xs font-medium text-slate-500">
+                  Duration: {project.duration}
+                </span>
+              )}
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">
               {project.title}
             </h3>
 
-            {/* Problem / Solution Breakdown */}
+            {/* Problem & Solution */}
             <div className="space-y-3 mb-6">
-              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-xs sm:text-sm">
-                <span className="font-bold text-slate-900 block mb-0.5">🎯 The Problem:</span>
-                <p className="text-slate-600 leading-relaxed">{project.problem}</p>
-              </div>
+              {project.problem && (
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-xs sm:text-sm">
+                  <span className="font-bold text-slate-900 block mb-0.5">🎯 The Problem:</span>
+                  <p className="text-slate-600 leading-relaxed">{project.problem}</p>
+                </div>
+              )}
 
-              <div className="p-3.5 rounded-2xl bg-emerald-50/50 border border-emerald-100/80 text-xs sm:text-sm">
-                <span className="font-bold text-emerald-900 block mb-0.5">💡 The Solution:</span>
-                <p className="text-emerald-800 leading-relaxed">{project.solution}</p>
-              </div>
+              {project.solution && (
+                <div className="p-3.5 rounded-2xl bg-emerald-50/50 border border-emerald-100/80 text-xs sm:text-sm">
+                  <span className="font-bold text-emerald-900 block mb-0.5">💡 The Solution:</span>
+                  <p className="text-emerald-800 leading-relaxed">{project.solution}</p>
+                </div>
+              )}
             </div>
 
-            {/* Key Features Bullet List */}
-            <div className="mb-6">
-              <h4 className="text-xs font-bold uppercase text-slate-400 mb-2.5 tracking-wider">
-                Key Engineering Features
-              </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600">
-                {project.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="text-emerald-500 font-bold">✓</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Features List */}
+            {project.features && project.features.length > 0 && (
+              <div className="mb-6">
+                <h4 className="text-xs font-bold uppercase text-slate-400 mb-2.5 tracking-wider">
+                  Key Engineering Features
+                </h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-600">
+                  {project.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="text-emerald-500 font-bold">✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
-          {/* Bottom Controls & Tech Stack */}
+          {/* Tech Stack & Links */}
           <div>
             <div className="flex flex-wrap gap-2 mb-6 pt-4 border-t border-slate-100">
               {project.techStack.map((tech) => (
@@ -110,15 +130,17 @@ export default function FeaturedProjectCard({ project }: { project: ProjectItem 
                   <span>↗</span>
                 </a>
               )}
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200 transition-colors flex items-center gap-2"
-              >
-                <span>GitHub Code</span>
-                <span>→</span>
-              </a>
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200 transition-colors flex items-center gap-2"
+                >
+                  <span>GitHub Code</span>
+                  <span>→</span>
+                </a>
+              )}
             </div>
           </div>
 
