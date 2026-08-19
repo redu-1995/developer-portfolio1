@@ -5,5 +5,5 @@ export const FOOTER_DATA = {
   email: "nara1415karol@gmail.com", 
   linkedin: "https://www.linkedin.com/in/rediet-abreham-8a8b49250/",
   github: "https://github.com/redu-1995", 
-  resumeUrl: "/Rediet_Abreham_CV.pdf", 
+  resumeUrl: "/Rediet AbrehamResume", 
 };

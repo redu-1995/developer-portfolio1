@@ -64,7 +64,7 @@ export default function Hero() {
               </Link>
 
               <a
-                href="/Rediet_Abreham_CV.pdf"
+                href="/RedietAbrehamResume.pdf"
                 download
                 className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm border border-slate-200/80 transition-all duration-200 flex items-center justify-center gap-2"
               >
