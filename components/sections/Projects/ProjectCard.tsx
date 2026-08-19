@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ProjectItem } from "@/data/projects";
+import ProjectCarousel from "./ProjectCarousel";
 
 export default function ProjectCard({ project }: { project: ProjectItem }) {
   const isCompleted = project.status === "Completed";
@@ -35,7 +36,14 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
           </div>
 
           {/* Screenshot Image Container */}
-          <div className="relative w-full h-full min-h-[180px] flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+        <div className="relative w-full h-full min-h-[180px] flex items-center justify-center">
+        {project.images && project.images.length > 1 ? (
+          <ProjectCarousel
+            images={project.images}
+            title={project.title}
+          />
+        ) : (
+          <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
             <Image
               src={project.image}
               alt={project.title}
@@ -44,6 +52,8 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
+        )}
+      </div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
         </div>

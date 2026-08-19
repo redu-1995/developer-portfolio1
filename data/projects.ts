@@ -11,7 +11,10 @@ export interface ProjectItem {
   solution: string;
   features: string[];
   techStack: string[];
-  image: string;
+
+  image: string; // Main/cover image
+  images?: string[]; // Additional carousel images
+
   liveUrl?: string;
   githubUrl: string;
 }
@@ -99,4 +102,64 @@ export const PROJECTS_DATA: ProjectItem[] = [
       "https://offline-learning-8l4p5y4jj-rediets-projects-15e9e9ed.vercel.app/",
     githubUrl: "https://github.com/redu-1995/offline-learning-app",
   },
-];
+{
+  id: "inventory-sales-system",
+  title: "Inventory & Sales Management System",
+  type: "Full-Stack Web Application",
+  role: "Full-Stack Developer",
+  featured: true,
+  status: "Completed",
+  duration: "2 mos",
+
+  description:
+    "A full-stack Inventory and Sales Management System designed to help businesses manage products, inventory, sales, customers, purchase orders, notifications, and business reports from a centralized dashboard.",
+
+  problem:
+    "Managing inventory and sales manually can make it difficult for businesses to track stock levels, monitor sales, manage customers, and identify low-stock products.",
+
+  solution:
+    "Developed a centralized web-based management system that provides real-time inventory tracking, sales management, purchase order management, customer records, notifications, and exportable business reports.",
+
+  features: [
+    "Real-time dashboard with key business metrics",
+    "Product and category management",
+    "Product archive and restore functionality",
+    "Inventory and stock movement tracking",
+    "Low-stock and out-of-stock notifications",
+    "Sales and payment management",
+    "Customer management",
+    "Purchase order management",
+    "Sales, inventory, customer, and purchase order reports",
+    "Exportable business reports",
+    "Role-based user access",
+    "Global search functionality",
+  ],
+
+  techStack: [
+    "React",
+    "Tailwind CSS",
+    "JavaScript",
+    "Django",
+    "Django REST Framework",
+    "SQLite",
+  ],
+
+  // Required cover image
+  image: "/images/projects/inventory-dashboard.png",
+
+  // Optional images for the carousel
+  images: [
+    "/images/projects/inventory-dashboard.png",
+    "/images/projects/inventory-products.png",
+     "/images/projects/inventory.png",
+    "/images/projects/inventory-purchase-orders.png",
+    "/images/projects/inventory-sales.png",
+     "/images/projects/inventory-customers.png",
+    "/images/projects/inventory-reports.png",
+  ],
+
+  liveUrl: "https://inventory-sales-system-ten.vercel.app/",
+  githubUrl: "https://github.com/redu-1995/inventory-sales-system",
+}
+]
+
