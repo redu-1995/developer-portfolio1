@@ -118,6 +118,17 @@ export default function FeaturedProjectCard({ project }: { project: ProjectItem 
               ))}
             </div>
 
+            {project.demoCredentials && (
+              <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-3 text-xs text-amber-950">
+                <p className="font-bold">Demo login</p>
+                <p className="mt-1">
+                  Username: <span className="font-semibold">{project.demoCredentials.username}</span>
+                  <span className="mx-2 text-amber-400">|</span>
+                  Password: <span className="font-semibold">{project.demoCredentials.password}</span>
+                </p>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-3">
               {project.liveUrl && (
                 <a

@@ -103,7 +103,18 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
 
       {/* Footer Action Links */}
       <div className="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between gap-3 mt-auto">
-        <div className="flex items-center gap-3">
+        <div className="w-full">
+          {project.demoCredentials && (
+            <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5 text-xs text-amber-950">
+              <p className="font-bold">Demo login</p>
+              <p className="mt-1">
+                Username: <span className="font-semibold">{project.demoCredentials.username}</span>
+                <span className="mx-2 text-amber-400">|</span>
+                Password: <span className="font-semibold">{project.demoCredentials.password}</span>
+              </p>
+            </div>
+          )}
+          <div className="flex items-center gap-3">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -126,6 +137,7 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
               <span>→</span>
             </a>
           )}
+          </div>
         </div>
       </div>
 

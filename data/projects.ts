@@ -16,6 +16,10 @@ export interface ProjectItem {
   images?: string[]; // Additional carousel images
 
   liveUrl?: string;
+  demoCredentials?: {
+    username: string;
+    password: string;
+  };
   githubUrl: string;
 }
 
@@ -159,6 +163,10 @@ export const PROJECTS_DATA: ProjectItem[] = [
   ],
 
   liveUrl: "https://inventory-sales-system-ten.vercel.app/",
+  demoCredentials: {
+    username: "demo",
+    password: "demo1234",
+  },
   githubUrl: "https://github.com/redu-1995/inventory-sales-system",
 }
 ]
